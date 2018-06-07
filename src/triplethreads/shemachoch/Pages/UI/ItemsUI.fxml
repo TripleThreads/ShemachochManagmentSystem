@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="parent" stylesheets="@../stylesheet.css"
+            xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="triplethreads.shemachoch.Pages.Controller">
+    <children>
+        <VBox prefHeight="600.0" prefWidth="300.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0"
+              AnchorPane.topAnchor="0.0">
+            <children>
+                <Label minWidth="-Infinity" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #00a2d3;"
+                       text="Shemt" textFill="WHITE">
+                    <font>
+                        <Font size="27.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="50.0"/>
+                    </padding>
+                </Label>
+                <HBox alignment="CENTER_LEFT" onMouseClicked="#homeMenu" prefHeight="50.0" prefWidth="300.0"
+                      styleClass="btns">
+                    <children>
+                        <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@file:home.png"/>
+                            </image>
+                            <HBox.margin>
+                                <Insets left="50.0"/>
+                            </HBox.margin>
+                        </ImageView>
+                        <Label fx:id="home_menu" text="Home" textFill="WHITE">
+                            <padding>
+                                <Insets left="30.0"/>
+                            </padding>
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets/>
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="20.0"/>
+                    </VBox.margin>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" onMouseClicked="#sellMenu" prefHeight="50.0" prefWidth="300.0"
+                      styleClass="btns">
+                    <children>
+                        <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@file:shopping-cart.png"/>
+                            </image>
+                            <HBox.margin>
+                                <Insets left="50.0"/>
+                            </HBox.margin>
+                        </ImageView>
+                        <Label fx:id="sell_menu" text="Sell" textFill="WHITE">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <padding>
+                                <Insets left="30.0"/>
+                            </padding>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" onMouseClicked="#itemsMenu" prefHeight="50.0" prefWidth="300.0"
+                      styleClass="btns">
+                    <children>
+                        <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@file:items.png"/>
+                            </image>
+                            <HBox.margin>
+                                <Insets left="50.0"/>
+                            </HBox.margin>
+                        </ImageView>
+                        <Label fx:id="items_menu" text="Items" textFill="WHITE">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <padding>
+                                <Insets left="30.0"/>
+                            </padding>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" onMouseClicked="#customersMenu" prefHeight="50.0" prefWidth="300.0"
+                      styleClass="btns">
+                    <children>
+                        <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@file:customers.png"/>
+                            </image>
+                            <HBox.margin>
+                                <Insets left="50.0"/>
+                            </HBox.margin>
+                        </ImageView>
+                        <Label fx:id="customers_menu" text="Customers" textFill="WHITE">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <padding>
+                                <Insets left="30.0"/>
+                            </padding>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" onMouseClicked="#reportMenu" prefHeight="50.0" prefWidth="300.0"
+                      styleClass="btns">
+                    <children>
+                        <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@file:list.png"/>
+                            </image>
+                            <HBox.margin>
+                                <Insets left="50.0"/>
+                            </HBox.margin>
+                        </ImageView>
+                        <Label fx:id="report_menu" text="Report" textFill="WHITE">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <padding>
+                                <Insets left="30.0"/>
+                            </padding>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" onMouseClicked="#helpMenu" prefHeight="50.0" prefWidth="300.0"
+                      styleClass="btns">
+                    <children>
+                        <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@file:info.png"/>
+                            </image>
+                            <HBox.margin>
+                                <Insets left="50.0"/>
+                            </HBox.margin>
+                        </ImageView>
+                        <Label fx:id="help_menu" text="Help" textFill="WHITE">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <padding>
+                                <Insets left="30.0"/>
+                            </padding>
+                        </Label>
+                    </children>
+                </HBox>
+                <Label text="Label"/>
+            </children>
+        </VBox>
+        <VBox fx:id="body" layoutX="300.0" prefHeight="600.0" prefWidth="723.0" styleClass="body">
+            <children>
+                <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="724.0">
+                    <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" color="WHITE" height="10.0" radius="4.5" width="10.0"/>
+                    </effect>
+                    <children>
+                        <Label layoutX="56.0" layoutY="23.0" text="Sell">
+                            <font>
+                                <Font name="Ubuntu Light" size="18.0"/>
+                            </font>
+                        </Label>
+                        <JFXButton buttonType="RAISED" layoutX="606.0" layoutY="21.0"
+                                   style="-fx-background-color: #039be5;" text="Add Items" textFill="WHITE"/>
+                    </children>
+                </Pane>
+                <JFXTreeTableView fx:id="items_table" tableMenuButtonVisible="true"/>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
