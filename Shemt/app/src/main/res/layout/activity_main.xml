@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/qr_scanner_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="61dp"
+        android:layout_marginStart="61dp"
+        android:background="?android:attr/colorFocusedHighlight"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/qr_scanner"
+        android:textColor="@android:color/background_light"
+        android:onClick="QRScan"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/camera_btn"
+        android:layout_width="114dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="61dp"
+        android:layout_marginRight="61dp"
+        android:background="@android:color/holo_blue_dark"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="@string/camera"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:onClick="CaptureImage"/>
+</RelativeLayout>
