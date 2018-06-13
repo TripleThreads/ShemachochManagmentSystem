@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.TextField?>
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXColorPicker?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -101,8 +100,8 @@
                         </Label>
                     </children>
                 </HBox>
-                <HBox fx:id="customersMenu" alignment="CENTER_LEFT" onMouseClicked="#customersMenu" prefHeight="50.0"
-                      prefWidth="300.0" styleClass="btns">
+                <HBox alignment="CENTER_LEFT" onMouseClicked="#customersMenu" prefHeight="50.0" prefWidth="300.0"
+                      styleClass="btns">
                     <children>
                         <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -167,23 +166,41 @@
                 <Label text="Label"/>
             </children>
         </VBox>
-        <JFXTreeTableView fx:id="treeView" layoutX="662.0" layoutY="156.0" prefHeight="400.0" prefWidth="691.0"
-                          stylesheets="@../stylesheet.css" tableMenuButtonVisible="true" AnchorPane.leftAnchor="350.0"
-                          AnchorPane.rightAnchor="50.0"/>
-        <JFXButton buttonType="RAISED" layoutX="1467.0" layoutY="30.0" onAction="#addCustomer"
-                   style="-fx-background-color: #039be5;" text="Add Customer" textFill="WHITE"
-                   AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="30.0">
-            <padding>
-                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-            </padding>
-        </JFXButton>
-        <JFXColorPicker layoutX="757.0" layoutY="35.0"/>
-        <Label layoutX="408.0" layoutY="38.0" text="Customers">
+        <TextField layoutX="844.0" layoutY="184.0" prefHeight="26.0" prefWidth="228.0" promptText="Customer name"/>
+        <Label layoutX="694.0" layoutY="184.0" prefHeight="25.0" prefWidth="99.0" text="Name">
             <font>
-                <Font name="DejaVu Sans ExtraLight" size="18.0"/>
+                <Font name="Ubuntu Light" size="21.0"/>
             </font>
         </Label>
-        <JFXTextField labelFloat="true" layoutX="1161.0" layoutY="106.0" promptText="search"
-                      AnchorPane.rightAnchor="50.0"/>
+        <TextField layoutX="844.0" layoutY="234.0" prefHeight="26.0" prefWidth="228.0" promptText="Last name"/>
+        <Label layoutX="694.0" layoutY="234.0" prefHeight="25.0" prefWidth="99.0" text="Last Name">
+            <font>
+                <Font name="Ubuntu Light" size="21.0"/>
+            </font>
+        </Label>
+        <Label layoutX="693.0" layoutY="283.0" prefHeight="25.0" prefWidth="99.0" text="Family No">
+            <font>
+                <Font name="Ubuntu Light" size="21.0"/>
+            </font>
+        </Label>
+        <TextField layoutX="843.0" layoutY="334.0" prefHeight="26.0" prefWidth="228.0" promptText="Location"/>
+        <Label layoutX="693.0" layoutY="334.0" prefHeight="25.0" prefWidth="99.0" text="Location">
+            <font>
+                <Font name="Ubuntu Light" size="21.0"/>
+            </font>
+        </Label>
+        <TextField layoutX="843.0" layoutY="383.0" prefHeight="26.0" prefWidth="228.0" promptText="Customer name"/>
+        <Label layoutX="693.0" layoutY="383.0" prefHeight="25.0" prefWidth="99.0" text="Name">
+            <font>
+                <Font name="Ubuntu Light" size="21.0"/>
+            </font>
+        </Label>
+        <JFXButton buttonType="RAISED" layoutX="820.0" layoutY="452.0" prefHeight="36.0" prefWidth="142.0"
+                   text="Add Customer" textFill="WHITE">
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0"/>
+            </padding>
+        </JFXButton>
+        <ChoiceBox layoutX="844.0" layoutY="283.0" prefWidth="150.0"/>
     </children>
 </AnchorPane>

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="parent" stylesheets="@../stylesheet.css"
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" styleClass="parent" stylesheets="@../stylesheet.css"
             xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="triplethreads.shemachoch.Pages.Controller">
     <children>
@@ -141,8 +141,8 @@
                         </Label>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" onMouseClicked="#helpMenu" prefHeight="50.0" prefWidth="300.0"
-                      styleClass="btns">
+                <HBox fx:id="helpMenu" alignment="CENTER_LEFT" onMouseClicked="#helpMenu" prefHeight="50.0"
+                      prefWidth="300.0" styleClass="btns">
                     <children>
                         <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -165,28 +165,24 @@
                 <Label text="Label"/>
             </children>
         </VBox>
-        <VBox fx:id="body" layoutX="300.0" prefHeight="600.0" prefWidth="723.0" styleClass="body">
-            <children>
-                <JFXTabPane styleClass="help-tab">
-                    <tabs>
-                        <Tab styleClass="help_tab" text="Services">
-                            <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
-                            </content>
-                        </Tab>
-                        <Tab styleClass="help_tab" text="FAQ">
-                            <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
-                            </content>
-                        </Tab>
-                        <Tab styleClass="help_tab" text="Check for updates">
-                            <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
-                            </content>
-                        </Tab>
-                    </tabs>
-                </JFXTabPane>
-            </children>
-        </VBox>
+        <JFXTabPane layoutX="463.0" layoutY="41.0" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="50.0">
+            <tabs>
+                <Tab text="Services">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+                    </content>
+                </Tab>
+                <Tab text="FAQ">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+                    </content>
+                </Tab>
+                <Tab text="Contact Information">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+                    </content>
+                </Tab>
+            </tabs>
+        </JFXTabPane>
     </children>
 </AnchorPane>

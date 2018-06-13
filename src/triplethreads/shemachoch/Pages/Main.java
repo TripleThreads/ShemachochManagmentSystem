@@ -14,17 +14,24 @@ public class Main extends Application {
     static JFXComboBox dropdownButton;
     static Label label;
     static Label home, sell, items, customers, report, help;
-
+    static boolean fromMain = true;
+    boolean logged_in = false;
     @Override
     public void start(Stage primaryStage) throws Exception {
-        homeUI = FXMLLoader.load(getClass().getResource("UI/HomeUI.fxml"));
 
+        if (logged_in) {
+            homeUI = FXMLLoader.load(getClass().getResource("UI/HomeUI.fxml"));
+        } else {
+            homeUI = FXMLLoader.load(getClass().getResource("UI/LoginUI.fxml"));
+        }
         stage = primaryStage;
         primaryStage.setTitle("Shemt");
         Scene scene = new Scene(homeUI, 1024, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
-
+        if (!logged_in) {
+            return;
+        }
         dropdownButton = (JFXComboBox) homeUI.lookup("#combo_box");
         dropdownButton.getItems().addAll("English", "Amharic");
 
@@ -39,6 +46,8 @@ public class Main extends Application {
         report = (Label) homeUI.lookup("#report_menu");
         help = (Label) homeUI.lookup("#help_menu");
 
+        Controller.fromMain();
+        Controller.changeLanguage();
     }
 
 

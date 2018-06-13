@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="ShemachochManagmentSystem:jar">
+    <output-path>$USER_HOME$/Desktop</output-path>
+    <root id="archive" name="ShemachochManagmentSystem.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$USER_HOME$/Desktop/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="ShemachochManagmentSystem" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../jfoenix-8.0.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../charm-glisten-4.4.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="parent" stylesheets="@../stylesheet.css"
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" styleClass="parent" stylesheets="@../stylesheet.css"
             xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="triplethreads.shemachoch.Pages.Controller">
     <children>
@@ -120,8 +122,8 @@
                         </Label>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" onMouseClicked="#reportMenu" prefHeight="50.0" prefWidth="300.0"
-                      styleClass="btns">
+                <HBox fx:id="reportMenu" alignment="CENTER_LEFT" onMouseClicked="#reportMenu" prefHeight="50.0"
+                      prefWidth="300.0" styleClass="btns">
                     <children>
                         <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -165,27 +167,14 @@
                 <Label text="Label"/>
             </children>
         </VBox>
-        <VBox fx:id="body" layoutX="294.0" prefHeight="600.0" prefWidth="724.0" styleClass="body">
-            <children>
-                <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="724.0">
-                    <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" color="WHITE" height="10.0" radius="4.5" width="10.0"/>
-                    </effect>
-                    <children>
-                        <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="670.0" layoutY="30.0" pickOnBounds="true"
-                                   preserveRatio="true">
-                            <image>
-                                <Image url="@file:setting.png"/>
-                            </image>
-                        </ImageView>
-                        <Label layoutX="56.0" layoutY="23.0" text="Home">
-                            <font>
-                                <Font name="FreeSans" size="18.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                </Pane>
-            </children>
-        </VBox>
+        <JFXButton layoutX="1219.0" layoutY="39.0" text="Export to PDF" AnchorPane.rightAnchor="63.0"
+                   AnchorPane.topAnchor="30.0"/>
+        <JFXTreeTableView fx:id="treeView" layoutX="672.0" layoutY="166.0" prefHeight="400.0" prefWidth="691.0"
+                          stylesheets="@../stylesheet.css" tableMenuButtonVisible="true" AnchorPane.leftAnchor="350.0"
+                          AnchorPane.rightAnchor="50.0"/>
+        <JFXDatePicker defaultColor="#1b8ecd" layoutX="896.0" layoutY="118.0" promptText="specific date"
+                       showWeekNumbers="true"/>
+        <JFXComboBox focusColor="#2b8ef8" labelFloat="true" layoutX="640.0" layoutY="118.0"
+                     promptText="Select by month"/>
     </children>
 </AnchorPane>

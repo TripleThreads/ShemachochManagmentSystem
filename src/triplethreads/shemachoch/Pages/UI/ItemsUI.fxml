@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="parent" stylesheets="@../stylesheet.css"
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" styleClass="parent" stylesheets="@../stylesheet.css"
             xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="triplethreads.shemachoch.Pages.Controller">
     <children>
@@ -54,6 +53,11 @@
                                 <Insets/>
                             </HBox.margin>
                         </Label>
+                        <Label text="Sell">
+                            <font>
+                                <Font name="Ubuntu Light" size="18.0"/>
+                            </font>
+                        </Label>
                     </children>
                     <VBox.margin>
                         <Insets top="20.0"/>
@@ -80,8 +84,8 @@
                         </Label>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" onMouseClicked="#itemsMenu" prefHeight="50.0" prefWidth="300.0"
-                      styleClass="btns">
+                <HBox fx:id="itemsMenu" alignment="CENTER_LEFT" onMouseClicked="#itemsMenu" prefHeight="50.0"
+                      prefWidth="300.0" styleClass="btns">
                     <children>
                         <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -164,27 +168,24 @@
                         </Label>
                     </children>
                 </HBox>
-                <Label text="Label"/>
             </children>
         </VBox>
-        <VBox fx:id="body" layoutX="300.0" prefHeight="600.0" prefWidth="723.0" styleClass="body">
-            <children>
-                <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="724.0">
-                    <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" color="WHITE" height="10.0" radius="4.5" width="10.0"/>
-                    </effect>
-                    <children>
-                        <Label layoutX="56.0" layoutY="23.0" text="Sell">
-                            <font>
-                                <Font name="Ubuntu Light" size="18.0"/>
-                            </font>
-                        </Label>
-                        <JFXButton buttonType="RAISED" layoutX="606.0" layoutY="21.0"
-                                   style="-fx-background-color: #039be5;" text="Add Items" textFill="WHITE"/>
-                    </children>
-                </Pane>
-                <JFXTreeTableView fx:id="items_table" tableMenuButtonVisible="true"/>
-            </children>
-        </VBox>
+        <JFXTreeTableView fx:id="treeView" layoutX="350.0" layoutY="139.0" prefHeight="400.0" prefWidth="691.0"
+                          stylesheets="@../stylesheet.css" tableMenuButtonVisible="true" AnchorPane.leftAnchor="350.0"
+                          AnchorPane.rightAnchor="50.0"/>
+        <JFXButton buttonType="RAISED" layoutX="1230.0" layoutY="29.0" onAction="#addItems"
+                   style="-fx-background-color: #039be5;" text="Add Items" textFill="WHITE"
+                   AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="29.0">
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0"/>
+            </padding>
+        </JFXButton>
+        <Label layoutX="350.0" layoutY="34.0" text="Items">
+            <font>
+                <Font name="Ubuntu Light" size="26.0"/>
+            </font>
+        </Label>
+        <JFXTextField fx:id="searchField" labelFloat="true" layoutX="1161.0" layoutY="94.0" promptText="search"
+                      AnchorPane.rightAnchor="50.0"/>
     </children>
 </AnchorPane>

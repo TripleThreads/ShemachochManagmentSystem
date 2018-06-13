@@ -4,7 +4,6 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="parent" stylesheets="@../stylesheet.css"
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" styleClass="parent" stylesheets="@../stylesheet.css"
             xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="triplethreads.shemachoch.Pages.Controller">
     <children>
@@ -32,8 +31,8 @@
                         <Insets left="50.0"/>
                     </padding>
                 </Label>
-                <HBox alignment="CENTER_LEFT" onMouseClicked="#homeMenu" prefHeight="50.0" prefWidth="300.0"
-                      styleClass="btns">
+                <HBox fx:id="homeMenu" alignment="CENTER_LEFT" onMouseClicked="#homeMenu" prefHeight="50.0"
+                      prefWidth="300.0" styleClass="btns">
                     <children>
                         <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -164,53 +163,29 @@
                         </Label>
                     </children>
                 </HBox>
-                <Label text="Label"/>
             </children>
         </VBox>
-        <VBox fx:id="body" layoutX="300.0" prefHeight="600.0" prefWidth="718.0" styleClass="body">
+        <JFXComboBox fx:id="combo_box" layoutX="1209.0" layoutY="51.0" onAction="#setLanguage" promptText="Language"
+                     AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="30.0"/>
+        <Pane layoutX="338.0" layoutY="150.0" prefHeight="365.0" prefWidth="966.0" styleClass="card-01"
+              AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="50.0">
             <children>
-                <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="724.0">
-                    <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" color="WHITE" height="10.0" radius="4.5" width="10.0"/>
-                    </effect>
-                    <children>
-                        <Label fx:id="home_label" layoutX="56.0" layoutY="23.0" text="Home">
-                            <font>
-                                <Font name="FreeSans" size="18.0"/>
-                            </font>
-                        </Label>
-                        <JFXComboBox fx:id="combo_box" layoutX="573.0" layoutY="23.0" onAction="#setLanguage"
-                                     promptText="Language"/>
-                    </children>
-                </Pane>
-                <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                      prefHeight="306.0" prefWidth="724.0" styleClass="card-01" VBox.vgrow="ALWAYS">
-                    <children>
-                        <Pane layoutX="77.0" layoutY="70.0" prefHeight="181.0" prefWidth="200.0" styleClass="round-box">
-                            <children>
-                                <ProgressIndicator layoutX="30.0" prefHeight="200.0" prefWidth="190.0" progress="0.5"
-                                                   radius="65.0" style="-fx-border-color: #72d3fe;"/>
-                                <Label alignment="CENTER" layoutY="140.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="200.0"
-                                       style="-fx-background-color: #72d3fe;" text="Sugar"/>
-                            </children>
-                        </Pane>
-                        <ProgressIndicator layoutX="347.0" layoutY="70.0" prefHeight="200.0" prefWidth="190.0"
-                                           progress="0.79" radius="65.0" style="-fx-border-color: #72d3fe;"/>
-                        <Label alignment="CENTER" layoutX="347.0" layoutY="211.0" maxHeight="-Infinity"
-                               maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0"
-                               prefWidth="140.0" style="-fx-background-color: #72d3fe;" text="Food oil"/>
-                        <ProgressIndicator layoutX="552.0" layoutY="70.0" prefHeight="200.0" prefWidth="190.0"
-                                           progress="0.24" radius="65.0" style="-fx-border-color: #72d3fe;"/>
-                        <Label alignment="CENTER" layoutX="552.0" layoutY="211.0" maxHeight="-Infinity"
-                               maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0"
-                               prefWidth="140.0" style="-fx-background-color: #72d3fe;" text="Soap"/>
-                    </children>
-                    <VBox.margin>
-                        <Insets/>
-                    </VBox.margin>
-                </Pane>
+                <ProgressIndicator layoutX="679.0" layoutY="90.0" prefHeight="200.0" prefWidth="190.0" progress="0.24"
+                                   radius="65.0" style="-fx-border-color: #72d3fe;"/>
+                <ProgressIndicator layoutX="427.0" layoutY="90.0" prefHeight="200.0" prefWidth="190.0" progress="0.79"
+                                   radius="65.0" style="-fx-border-color: #72d3fe;"/>
+                <ProgressIndicator layoutX="136.0" layoutY="90.0" prefHeight="200.0" prefWidth="190.0" progress="0.5"
+                                   radius="65.0" style="-fx-border-color: #72d3fe;"/>
+                <Label alignment="CENTER" layoutX="137.0" layoutY="230.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="140.0"
+                       style="-fx-background-color: #72d3fe;" text="Sugar"/>
+                <Label alignment="CENTER" layoutX="679.0" layoutY="230.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="140.0"
+                       style="-fx-background-color: #72d3fe;" text="Soap"/>
+                <Label alignment="CENTER" layoutX="427.0" layoutY="230.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                       minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="140.0"
+                       style="-fx-background-color: #72d3fe;" text="Food oil"/>
             </children>
-        </VBox>
+        </Pane>
     </children>
 </AnchorPane>

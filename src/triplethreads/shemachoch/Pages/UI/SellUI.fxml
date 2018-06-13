@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.layout.Layer?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXProgressBar?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.effect.Glow?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="parent" stylesheets="@../stylesheet.css"
-            xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="triplethreads.shemachoch.Pages.Controller">
+<AnchorPane fx:id="sellParentAnchor" prefHeight="768.0" prefWidth="1366.0" styleClass="parent"
+            stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="triplethreads.shemachoch.Pages.Controller">
     <children>
         <VBox prefHeight="600.0" prefWidth="300.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0"
               AnchorPane.topAnchor="0.0">
@@ -63,8 +65,8 @@
                         <Insets top="20.0"/>
                     </VBox.margin>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" onMouseClicked="#sellMenu" prefHeight="50.0" prefWidth="300.0"
-                      styleClass="btns">
+                <HBox fx:id="sellMenu" alignment="CENTER_LEFT" onMouseClicked="#sellMenu" prefHeight="50.0"
+                      prefWidth="300.0" styleClass="btns">
                     <children>
                         <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -171,95 +173,132 @@
                 <Label text="Label"/>
             </children>
         </VBox>
-        <VBox fx:id="body" layoutX="294.0" prefHeight="600.0" prefWidth="724.0" styleClass="body">
+        <JFXProgressBar fx:id="progressBar" layoutX="613.0" layoutY="485.0" prefHeight="5.0" prefWidth="465.0"
+                        progress="0.5">
+            <effect>
+                <Glow level="1.0"/>
+            </effect>
+        </JFXProgressBar>
+        <Label layoutX="602.0" layoutY="477.0" prefHeight="21.0" prefWidth="22.0" styleClass="round-lbl" text="1"
+               textFill="WHITE">
+            <padding>
+                <Insets left="7.0"/>
+            </padding>
+        </Label>
+        <Label layoutX="835.0" layoutY="477.0" prefHeight="21.0" prefWidth="22.0" styleClass="round-lbl" text="2"
+               textFill="WHITE">
+            <padding>
+                <Insets left="7.0"/>
+            </padding>
+        </Label>
+        <Label layoutX="574.0" layoutY="504.0" text="Verify Buyer" textFill="#01a05e" textOverrun="CENTER_ELLIPSIS">
+            <font>
+                <Font name="Ubuntu Bold" size="13.0"/>
+            </font>
+        </Label>
+        <Label layoutX="1051.0" layoutY="504.0" text="Payment" textFill="#dac8c8" textOverrun="CENTER_ELLIPSIS">
+            <font>
+                <Font name="Ubuntu Bold" size="13.0"/>
+            </font>
+        </Label>
+        <Label layoutX="1067.0" layoutY="477.0" prefHeight="21.0" prefWidth="22.0" styleClass="round-lbl" text="3"
+               textFill="WHITE">
+            <padding>
+                <Insets left="7.0"/>
+            </padding>
+        </Label>
+        <Label layoutX="798.0" layoutY="504.0" text="Specify amount" textFill="#01a05e" textOverrun="CENTER_ELLIPSIS">
+            <font>
+                <Font name="Ubuntu Bold" size="13.0"/>
+            </font>
+        </Label>
+        <JFXButton layoutX="811.0" layoutY="403.0" onAction="#nextButtonSellMenu" text="next"/>
+        <StackPane fx:id="sellParentStackPane" layoutX="609.0" layoutY="96.0" prefHeight="264.0" prefWidth="465.0">
             <children>
-                <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="724.0">
-                    <effect>
-                        <DropShadow blurType="ONE_PASS_BOX" color="WHITE" height="10.0" radius="4.5" width="10.0"/>
-                    </effect>
+                <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #abc;">
                     <children>
-                        <Label layoutX="56.0" layoutY="23.0" text="Sell">
+                        <JFXTreeTableView layoutX="56.0" layoutY="29.0" prefHeight="206.0" prefWidth="353.0">
+                            <columns>
+                                <TreeTableColumn prefWidth="75.0" text="Item"/>
+                                <TreeTableColumn prefWidth="75.0" text="Number"/>
+                                <TreeTableColumn prefWidth="75.0" text="price"/>
+                            </columns>
+                        </JFXTreeTableView>
+                    </children>
+                </Pane>
+                <Pane fx:id="verifyBuyerPaneSellMenu" prefHeight="260.0" prefWidth="465.0"
+                      style="-fx-background-color: #abc;">
+                    <children>
+                        <JFXCheckBox checkedColor="#259e5f" layoutX="124.0" layoutY="222.0" text="Soap"
+                                     textFill="#8d2929">
                             <font>
-                                <Font name="FreeSans" size="18.0"/>
+                                <Font name="DejaVu Sans ExtraLight" size="18.0"/>
                             </font>
-                        </Label>
-                        <Label layoutX="254.0" layoutY="26.0" text="Three very simple steps to sell your goods.">
+                        </JFXCheckBox>
+                        <JFXCheckBox checkedColor="#259e5f" layoutX="123.0" layoutY="132.0" text="Flour"
+                                     textFill="#8d2929">
                             <font>
-                                <Font name="Ubuntu" size="13.0"/>
+                                <Font name="DejaVu Sans ExtraLight" size="18.0"/>
+                            </font>
+                        </JFXCheckBox>
+                        <JFXCheckBox checkedColor="#259e5f" layoutX="124.0" layoutY="88.0" text="Sugar"
+                                     textFill="#8d2929" unCheckedColor="#fcfafa" wrapText="true">
+                            <font>
+                                <Font name="DejaVu Sans ExtraLight" size="18.0"/>
+                            </font>
+                        </JFXCheckBox>
+                        <JFXCheckBox checkedColor="#259e5f" layoutX="124.0" layoutY="176.0" text="Oil"
+                                     textFill="#8d2929">
+                            <font>
+                                <Font name="DejaVu Sans ExtraLight" size="18.0"/>
+                            </font>
+                        </JFXCheckBox>
+                        <JFXComboBox layoutX="262.0" layoutY="86.0" prefHeight="5.0" prefWidth="56.0"
+                                     visibleRowCount="5"/>
+                        <JFXComboBox layoutX="264.0" layoutY="129.0" prefHeight="16.0" prefWidth="56.0"/>
+                        <JFXComboBox layoutX="264.0" layoutY="173.0" prefHeight="16.0" prefWidth="56.0"/>
+                        <JFXComboBox layoutX="262.0" layoutY="216.0" prefHeight="16.0" prefWidth="56.0"/>
+                        <Label layoutX="66.0" layoutY="32.0" text="Please specify amount of item you want to buy"
+                               textFill="#561f72">
+                            <font>
+                                <Font name="Ubuntu Light" size="17.0"/>
                             </font>
                         </Label>
                     </children>
                 </Pane>
-                <Pane prefHeight="380.0" prefWidth="724.0">
+                <Pane fx:id="specifyAmountPaneSellMenu" prefHeight="200.0" prefWidth="200.0"
+                      style="-fx-background-color: #abc;">
                     <children>
-                        <JFXProgressBar layoutX="177.0" layoutY="330.0" prefHeight="5.0" prefWidth="414.0"
-                                        progress="0.52">
-                            <effect>
-                                <Glow level="1.0"/>
-                            </effect>
-                        </JFXProgressBar>
-                        <Label layoutX="166.0" layoutY="322.0" prefHeight="21.0" prefWidth="22.0" styleClass="round-lbl"
-                               text="1" textFill="WHITE">
-                            <padding>
-                                <Insets left="7.0"/>
-                            </padding>
-                        </Label>
-                        <Label layoutX="373.0" layoutY="322.0" prefHeight="21.0" prefWidth="22.0" styleClass="round-lbl"
-                               text="2" textFill="WHITE">
-                            <padding>
-                                <Insets left="7.0"/>
-                            </padding>
-                        </Label>
-                        <Label layoutX="580.0" layoutY="322.0" prefHeight="21.0" prefWidth="22.0" styleClass="round-lbl"
-                               text="3" textFill="WHITE">
-                            <padding>
-                                <Insets left="7.0"/>
-                            </padding>
-                        </Label>
-                        <Label layoutX="130.0" layoutY="349.0" text="Scan QR code" textFill="#01a05e"
-                               textOverrun="CENTER_ELLIPSIS">
+                        <ImageView fitHeight="185.0" fitWidth="150.0" layoutX="14.0" layoutY="39.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@file:avatar92.jpg"/>
+                            </image>
+                        </ImageView>
+                        <Label layoutX="217.0" layoutY="62.0" text="Name">
                             <font>
-                                <Font name="Ubuntu Bold" size="13.0"/>
+                                <Font name="Meera" size="23.0"/>
                             </font>
                         </Label>
-                        <Label layoutX="342.0" layoutY="349.0" text="Specify amount" textFill="#01a05e"
-                               textOverrun="CENTER_ELLIPSIS">
+                        <Label layoutX="217.0" layoutY="100.0" text="Location">
                             <font>
-                                <Font name="Ubuntu Bold" size="13.0"/>
+                                <Font name="Meera" size="23.0"/>
                             </font>
                         </Label>
-                        <Label layoutX="564.0" layoutY="349.0" text="Payment" textFill="#dac8c8"
-                               textOverrun="CENTER_ELLIPSIS">
+                        <Label layoutX="217.0" layoutY="139.0" text="Family No">
                             <font>
-                                <Font name="Ubuntu Bold" size="13.0"/>
+                                <Font name="Meera" size="23.0"/>
                             </font>
                         </Label>
-                        <Layer backgroundFade="2.0" layoutX="188.0" layoutY="78.0">
-                            <children>
-                                <Pane prefHeight="200.0" prefWidth="200.0"/>
-                                <Pane prefHeight="200.0" prefWidth="200.0">
-                                    <children>
-                                        <Label text="label 1"/>
-                                    </children>
-                                </Pane>
-                            </children>
-                        </Layer>
+                        <FlowPane prefHeight="200.0" prefWidth="200.0"/>
+                        <Label layoutX="215.0" layoutY="14.0" text="Customer basic information" textFill="#322457">
+                            <font>
+                                <Font size="15.0"/>
+                            </font>
+                        </Label>
                     </children>
-                    <padding>
-                        <Insets right="10.0"/>
-                    </padding>
-                    <effect>
-                        <Lighting>
-                            <bumpInput>
-                                <Shadow/>
-                            </bumpInput>
-                            <light>
-                                <Light.Distant/>
-                            </light>
-                        </Lighting>
-                    </effect>
                 </Pane>
             </children>
-        </VBox>
+        </StackPane>
     </children>
 </AnchorPane>
