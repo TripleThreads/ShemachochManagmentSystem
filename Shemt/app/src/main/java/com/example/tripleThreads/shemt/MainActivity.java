@@ -1,4 +1,4 @@
-package com.example.segni.shemt;
+package com.example.tripleThreads.shemt;
 
 import android.content.Intent;
 import android.net.Uri;
