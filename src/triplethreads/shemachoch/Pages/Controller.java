@@ -14,12 +14,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import triplethreads.shemachoch.EntityClasses.Seller;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -388,6 +391,28 @@ public class Controller {
 
     }
 
+public void validateCustumer(TextField Name , TextField lastName , ComboBox FamilyNO , TextField laocation) {
+
+    if (String.valueOf(Name).equals(" ") || String.valueOf(lastName).equals(" ")
+            || String.valueOf(FamilyNO).equals("") || String.valueOf(laocation).equals("")) {
+        System.out.println("please fill the space");
+
+    } else if (String.valueOf(Name).matches("\\d")) {
+
+        System.out.println("The value of name should contian only letters");
+    } else if (String.valueOf(lastName).matches("\\d")) {
+
+        System.out.println("The value of last name should only contian letters");
+    } else if (String.valueOf(FamilyNO).contains("0-9")) {
+        System.out.println("The value of FamilyNo should only contian numbers");
 
 
-}
+    } else {
+
+        Seller customer = new Seller();
+        String credential[] = {String.valueOf(Name), String.valueOf(lastName), String.valueOf(FamilyNO), String.valueOf(laocation)};
+        customer.AddCustomer(credential);
+    }
+
+
+}}
