@@ -19,8 +19,8 @@
         <VBox prefHeight="600.0" prefWidth="300.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0"
               AnchorPane.topAnchor="0.0">
             <children>
-                <Label minWidth="-Infinity" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #00a2d3;"
-                       text="Shemt" textFill="WHITE">
+                <Label fx:id="logo_label" minWidth="-Infinity" prefHeight="75.0" prefWidth="300.0"
+                       style="-fx-background-color: #00a2d3;" text="Shemt" textFill="WHITE">
                     <font>
                         <Font size="27.0"/>
                     </font>
@@ -166,41 +166,50 @@
                 <Label text="Label"/>
             </children>
         </VBox>
-        <TextField layoutX="844.0" layoutY="184.0" prefHeight="26.0" prefWidth="228.0" promptText="Customer name"/>
-        <Label layoutX="694.0" layoutY="184.0" prefHeight="25.0" prefWidth="99.0" text="Name">
+        <TextField layoutX="819.0" layoutY="184.0" prefHeight="26.0" prefWidth="228.0" promptText="Customer name"
+                   AnchorPane.rightAnchor="319.0"/>
+        <Label layoutX="668.0" layoutY="184.0" prefHeight="25.0" prefWidth="99.0" text="Name"
+               AnchorPane.rightAnchor="599.0">
             <font>
                 <Font name="Ubuntu Light" size="21.0"/>
             </font>
         </Label>
-        <TextField layoutX="844.0" layoutY="234.0" prefHeight="26.0" prefWidth="228.0" promptText="Last name"/>
-        <Label layoutX="694.0" layoutY="234.0" prefHeight="25.0" prefWidth="99.0" text="Last Name">
+        <TextField layoutX="819.0" layoutY="234.0" prefHeight="26.0" prefWidth="228.0" promptText="Last name"
+                   AnchorPane.rightAnchor="319.0"/>
+        <Label layoutX="668.0" layoutY="234.0" prefHeight="25.0" prefWidth="99.0" text="Last Name"
+               AnchorPane.rightAnchor="599.0">
             <font>
                 <Font name="Ubuntu Light" size="21.0"/>
             </font>
         </Label>
-        <Label layoutX="693.0" layoutY="283.0" prefHeight="25.0" prefWidth="99.0" text="Family No">
+        <Label layoutX="668.0" layoutY="283.0" prefHeight="25.0" prefWidth="99.0" text="Family No"
+               AnchorPane.rightAnchor="599.0">
             <font>
                 <Font name="Ubuntu Light" size="21.0"/>
             </font>
         </Label>
-        <TextField layoutX="843.0" layoutY="334.0" prefHeight="26.0" prefWidth="228.0" promptText="Location"/>
-        <Label layoutX="693.0" layoutY="334.0" prefHeight="25.0" prefWidth="99.0" text="Location">
+        <TextField layoutX="819.0" layoutY="334.0" prefHeight="26.0" prefWidth="228.0" promptText="Location"
+                   AnchorPane.rightAnchor="319.0"/>
+        <Label layoutX="668.0" layoutY="334.0" prefHeight="25.0" prefWidth="99.0" text="Location"
+               AnchorPane.rightAnchor="599.0">
             <font>
                 <Font name="Ubuntu Light" size="21.0"/>
             </font>
         </Label>
-        <TextField layoutX="843.0" layoutY="383.0" prefHeight="26.0" prefWidth="228.0" promptText="Customer name"/>
-        <Label layoutX="693.0" layoutY="383.0" prefHeight="25.0" prefWidth="99.0" text="Name">
+        <TextField layoutX="819.0" layoutY="383.0" prefHeight="26.0" prefWidth="228.0" promptText="Customer name"
+                   AnchorPane.rightAnchor="319.0"/>
+        <Label layoutX="668.0" layoutY="383.0" prefHeight="25.0" prefWidth="99.0" text="Name"
+               AnchorPane.rightAnchor="599.0">
             <font>
                 <Font name="Ubuntu Light" size="21.0"/>
             </font>
         </Label>
-        <JFXButton buttonType="RAISED" layoutX="820.0" layoutY="452.0" prefHeight="36.0" prefWidth="142.0"
-                   text="Add Customer" textFill="WHITE">
+        <JFXButton buttonType="RAISED" layoutX="795.0" layoutY="452.0" prefHeight="36.0" prefWidth="142.0"
+                   text="Add Customer" textFill="WHITE" AnchorPane.rightAnchor="429.0">
             <padding>
                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0"/>
             </padding>
         </JFXButton>
-        <ChoiceBox layoutX="844.0" layoutY="283.0" prefWidth="150.0"/>
+        <ChoiceBox layoutX="819.0" layoutY="283.0" prefWidth="150.0" AnchorPane.rightAnchor="397.0"/>
     </children>
 </AnchorPane>

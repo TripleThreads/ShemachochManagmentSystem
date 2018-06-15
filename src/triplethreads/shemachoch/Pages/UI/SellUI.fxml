@@ -4,10 +4,8 @@
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXProgressBar?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -26,8 +24,8 @@
         <VBox prefHeight="600.0" prefWidth="300.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0"
               AnchorPane.topAnchor="0.0">
             <children>
-                <Label minWidth="-Infinity" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #00a2d3;"
-                       text="Shemt" textFill="WHITE">
+                <Label fx:id="logo_label" minWidth="-Infinity" prefHeight="75.0" prefWidth="300.0"
+                       style="-fx-background-color: #00a2d3;" text="Shemt" textFill="WHITE">
                     <font>
                         <Font size="27.0"/>
                     </font>
@@ -174,7 +172,7 @@
             </children>
         </VBox>
         <JFXProgressBar fx:id="progressBar" layoutX="613.0" layoutY="485.0" prefHeight="5.0" prefWidth="465.0"
-                        progress="0.5">
+                        progress="0.0">
             <effect>
                 <Glow level="1.0"/>
             </effect>
@@ -212,62 +210,12 @@
                 <Font name="Ubuntu Bold" size="13.0"/>
             </font>
         </Label>
-        <JFXButton layoutX="811.0" layoutY="403.0" onAction="#nextButtonSellMenu" text="next"/>
-        <StackPane fx:id="sellParentStackPane" layoutX="609.0" layoutY="96.0" prefHeight="264.0" prefWidth="465.0">
+        <JFXButton fx:id="next_button" layoutX="811.0" layoutY="403.0" onAction="#nextButtonSellMenu" text="next"/>
+        <StackPane fx:id="sellParentStackPane" layoutX="609.0" layoutY="96.0" prefHeight="264.0" prefWidth="465.0"
+                   AnchorPane.leftAnchor="579.0" AnchorPane.rightAnchor="262.0">
             <children>
-                <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #abc;">
-                    <children>
-                        <JFXTreeTableView layoutX="56.0" layoutY="29.0" prefHeight="206.0" prefWidth="353.0">
-                            <columns>
-                                <TreeTableColumn prefWidth="75.0" text="Item"/>
-                                <TreeTableColumn prefWidth="75.0" text="Number"/>
-                                <TreeTableColumn prefWidth="75.0" text="price"/>
-                            </columns>
-                        </JFXTreeTableView>
-                    </children>
-                </Pane>
-                <Pane fx:id="verifyBuyerPaneSellMenu" prefHeight="260.0" prefWidth="465.0"
-                      style="-fx-background-color: #abc;">
-                    <children>
-                        <JFXCheckBox checkedColor="#259e5f" layoutX="124.0" layoutY="222.0" text="Soap"
-                                     textFill="#8d2929">
-                            <font>
-                                <Font name="DejaVu Sans ExtraLight" size="18.0"/>
-                            </font>
-                        </JFXCheckBox>
-                        <JFXCheckBox checkedColor="#259e5f" layoutX="123.0" layoutY="132.0" text="Flour"
-                                     textFill="#8d2929">
-                            <font>
-                                <Font name="DejaVu Sans ExtraLight" size="18.0"/>
-                            </font>
-                        </JFXCheckBox>
-                        <JFXCheckBox checkedColor="#259e5f" layoutX="124.0" layoutY="88.0" text="Sugar"
-                                     textFill="#8d2929" unCheckedColor="#fcfafa" wrapText="true">
-                            <font>
-                                <Font name="DejaVu Sans ExtraLight" size="18.0"/>
-                            </font>
-                        </JFXCheckBox>
-                        <JFXCheckBox checkedColor="#259e5f" layoutX="124.0" layoutY="176.0" text="Oil"
-                                     textFill="#8d2929">
-                            <font>
-                                <Font name="DejaVu Sans ExtraLight" size="18.0"/>
-                            </font>
-                        </JFXCheckBox>
-                        <JFXComboBox layoutX="262.0" layoutY="86.0" prefHeight="5.0" prefWidth="56.0"
-                                     visibleRowCount="5"/>
-                        <JFXComboBox layoutX="264.0" layoutY="129.0" prefHeight="16.0" prefWidth="56.0"/>
-                        <JFXComboBox layoutX="264.0" layoutY="173.0" prefHeight="16.0" prefWidth="56.0"/>
-                        <JFXComboBox layoutX="262.0" layoutY="216.0" prefHeight="16.0" prefWidth="56.0"/>
-                        <Label layoutX="66.0" layoutY="32.0" text="Please specify amount of item you want to buy"
-                               textFill="#561f72">
-                            <font>
-                                <Font name="Ubuntu Light" size="17.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                </Pane>
                 <Pane fx:id="specifyAmountPaneSellMenu" prefHeight="200.0" prefWidth="200.0"
-                      style="-fx-background-color: #abc;">
+                      style="-fx-background-color: #4E6A9C;">
                     <children>
                         <ImageView fitHeight="185.0" fitWidth="150.0" layoutX="14.0" layoutY="39.0" pickOnBounds="true"
                                    preserveRatio="true">
@@ -275,29 +223,73 @@
                                 <Image url="@file:avatar92.jpg"/>
                             </image>
                         </ImageView>
-                        <Label layoutX="217.0" layoutY="62.0" text="Name">
+                        <Label layoutX="217.0" layoutY="62.0" text="Name" textFill="WHITE">
                             <font>
-                                <Font name="Meera" size="23.0"/>
+                                <Font name="Open Sans Light" size="17.0"/>
                             </font>
                         </Label>
-                        <Label layoutX="217.0" layoutY="100.0" text="Location">
+                        <Label layoutX="217.0" layoutY="100.0" text="Location" textFill="WHITE">
                             <font>
-                                <Font name="Meera" size="23.0"/>
+                                <Font name="Open Sans Light" size="17.0"/>
                             </font>
                         </Label>
-                        <Label layoutX="217.0" layoutY="139.0" text="Family No">
+                        <Label layoutX="217.0" layoutY="139.0" text="Family No" textFill="WHITE">
                             <font>
-                                <Font name="Meera" size="23.0"/>
+                                <Font name="Open Sans Light" size="17.0"/>
                             </font>
                         </Label>
-                        <FlowPane prefHeight="200.0" prefWidth="200.0"/>
-                        <Label layoutX="215.0" layoutY="14.0" text="Customer basic information" textFill="#322457">
+                        <FlowPane layoutY="32.0" prefHeight="200.0" prefWidth="200.0"/>
+                        <Label layoutX="215.0" layoutY="14.0" text="Customer basic information" textFill="WHITE">
                             <font>
-                                <Font size="15.0"/>
+                                <Font name="Open Sans Light" size="19.0"/>
                             </font>
                         </Label>
                     </children>
                 </Pane>
+                <Pane fx:id="verifyBuyerPaneSellMenu" prefHeight="260.0" prefWidth="465.0"
+                      style="-fx-background-color: #4E6A9C;">
+                    <children>
+                        <JFXCheckBox checkedColor="#259e5f" layoutX="124.0" layoutY="222.0" text="Soap"
+                                     textFill="#eee7e7">
+                            <font>
+                                <Font name="Open Sans Light" size="18.0"/>
+                            </font>
+                        </JFXCheckBox>
+                        <JFXCheckBox checkedColor="#259e5f" layoutX="123.0" layoutY="132.0" text="Flour"
+                                     textFill="#eee7e7">
+                            <font>
+                                <Font name="Open Sans Light" size="18.0"/>
+                            </font>
+                        </JFXCheckBox>
+                        <JFXCheckBox checkedColor="#259e5f" layoutX="124.0" layoutY="88.0" text="Sugar"
+                                     textFill="#eee7e7" unCheckedColor="#fcfafa" wrapText="true">
+                            <font>
+                                <Font name="Open Sans Light" size="18.0"/>
+                            </font>
+                        </JFXCheckBox>
+                        <JFXCheckBox checkedColor="#259e5f" layoutX="124.0" layoutY="176.0" text="Oil"
+                                     textFill="#eee7e7">
+                            <font>
+                                <Font name="Open Sans Light" size="18.0"/>
+                            </font>
+                        </JFXCheckBox>
+                        <JFXComboBox layoutX="293.0" layoutY="86.0" prefHeight="5.0" prefWidth="56.0"
+                                     unFocusColor="#bcb9b9" visibleRowCount="5"/>
+                        <JFXComboBox layoutX="295.0" layoutY="129.0" prefHeight="16.0" prefWidth="56.0"
+                                     unFocusColor="#bcb9b9"/>
+                        <JFXComboBox layoutX="295.0" layoutY="173.0" prefHeight="16.0" prefWidth="56.0"
+                                     unFocusColor="#bcb9b9"/>
+                        <JFXComboBox layoutX="293.0" layoutY="216.0" prefHeight="16.0" prefWidth="56.0"
+                                     unFocusColor="#bcb9b9"/>
+                        <Label layoutX="66.0" layoutY="32.0" text="Please specify amount of item you want to buy"
+                               textFill="WHITE">
+                            <font>
+                                <Font name="Ubuntu Light" size="17.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+                <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #4E6A9C;"/>
             </children>
         </StackPane>
     </children>

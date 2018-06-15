@@ -20,8 +20,8 @@
         <VBox prefHeight="600.0" prefWidth="300.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0"
               AnchorPane.topAnchor="0.0">
             <children>
-                <Label minWidth="-Infinity" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #00a2d3;"
-                       text="Shemt" textFill="WHITE">
+                <Label fx:id="logo_label" minWidth="-Infinity" prefHeight="75.0" prefWidth="300.0"
+                       style="-fx-background-color: #00a2d3;" text="Shemt" textFill="WHITE">
                     <font>
                         <Font size="27.0"/>
                     </font>
@@ -167,14 +167,15 @@
                 <Label text="Label"/>
             </children>
         </VBox>
-        <JFXButton layoutX="1219.0" layoutY="39.0" text="Export to PDF" AnchorPane.rightAnchor="63.0"
-                   AnchorPane.topAnchor="30.0"/>
+        <JFXButton layoutX="1186.0" layoutY="30.0" onAction="#exportToPDF" text="Export to PDF"
+                   AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="30.0"/>
         <JFXTreeTableView fx:id="treeView" layoutX="672.0" layoutY="166.0" prefHeight="400.0" prefWidth="691.0"
                           stylesheets="@../stylesheet.css" tableMenuButtonVisible="true" AnchorPane.leftAnchor="350.0"
                           AnchorPane.rightAnchor="50.0"/>
-        <JFXDatePicker defaultColor="#1b8ecd" layoutX="896.0" layoutY="118.0" promptText="specific date"
-                       showWeekNumbers="true"/>
-        <JFXComboBox focusColor="#2b8ef8" labelFloat="true" layoutX="640.0" layoutY="118.0"
-                     promptText="Select by month"/>
+        <JFXDatePicker fx:id="datePicker" defaultColor="#1b8ecd" layoutX="1125.0" layoutY="112.0"
+                       onAction="#generateReportByDate" promptText="specific date" showWeekNumbers="true"
+                       AnchorPane.rightAnchor="50.0"/>
+        <JFXComboBox fx:id="monthPicker" focusColor="#2b8ef8" labelFloat="true" layoutX="913.0" layoutY="112.0"
+                     onAction="#generateReportByMonth" promptText="Select by month" AnchorPane.rightAnchor="299.0"/>
     </children>
 </AnchorPane>

@@ -20,8 +20,8 @@
         <VBox prefHeight="600.0" prefWidth="300.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0"
               AnchorPane.topAnchor="0.0">
             <children>
-                <Label minWidth="-Infinity" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #00a2d3;"
-                       text="Shemt" textFill="WHITE">
+                <Label fx:id="logo_label" minWidth="-Infinity" prefHeight="75.0" prefWidth="300.0"
+                       style="-fx-background-color: #00a2d3;" text="Shemt" textFill="WHITE">
                     <font>
                         <Font size="27.0"/>
                     </font>
@@ -183,7 +183,7 @@
                 <Font name="DejaVu Sans ExtraLight" size="18.0"/>
             </font>
         </Label>
-        <JFXTextField labelFloat="true" layoutX="1161.0" layoutY="106.0" promptText="search"
+        <JFXTextField fx:id="searchField" labelFloat="true" layoutX="1161.0" layoutY="106.0" promptText="search"
                       AnchorPane.rightAnchor="50.0"/>
     </children>
 </AnchorPane>

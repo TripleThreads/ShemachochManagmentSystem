@@ -9,7 +9,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -35,15 +34,15 @@ import java.util.function.Predicate;
  * @author segni
  * the UI is built on javafx. one Stage is used for all scenes
  * but each menu has its own scene i.e FXML file. This is pretty similar to tiater where scene changes but the stage
- * will remain the same
- * <p>
+ * will remain the same.
+ *
  * homeMenu method listens for home button is clicked from main menu.
  * sellMenu method listens for sell button is clicked from main menu.
  * itemsMenu method listens for items button is clicked from main menu.
  * customersMenu method listens for customer button is clicked from main menu.
  * reportMenu method listens for report button is clicked from main menu.
  * helpMenu method listens for help button is clicked from main menu.
- * <p>
+ *
  * setSceneItems is used to get elements by their id from the scene
  * setLanguage is called when the language is changed [using the dropdown from UI]
  * writeLanguage is used to write user language prefrence on configuration file
@@ -56,7 +55,7 @@ public class Controller {
             itemsScene, sellScene, reportScene, addCustomerScene;
     static Locale locale;
     static ResourceBundle bundle;
-    static Label home, sell, items, customers, report, help;
+    static Label home, sell, items, customers, report, help, logo;
     static String CURRENT_LANG = "English";
     static JFXComboBox dropdownButton;
     static Parent homeParent;
@@ -113,6 +112,21 @@ public class Controller {
         stage.setScene(customersScene);
         stage.show();
 
+
+        searchInput = (JFXTextField) homeParent.lookup("#searchField");
+        searchInput.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                treeView.setPredicate(new Predicate<TreeItem<User>>() {
+                    @Override
+                    public boolean test(TreeItem<User> userTreeItem) {
+                        boolean flag = userTreeItem.getValue().department.getValue().toLowerCase().contains(newValue.toLowerCase()) || userTreeItem.getValue().department.getValue().toLowerCase().contains(newValue.toLowerCase());
+                        return flag;
+                    }
+                });
+            }
+        });
+
         setSceneItems(customersScene);
     }
 
@@ -147,7 +161,7 @@ public class Controller {
                 treeView.setPredicate(new Predicate<TreeItem<User>>() {
                     @Override
                     public boolean test(TreeItem<User> userTreeItem) {
-                        boolean flag = userTreeItem.getValue().department.getValue().contains(newValue) || userTreeItem.getValue().department.getValue().contains(newValue);
+                        boolean flag = userTreeItem.getValue().department.getValue().toLowerCase().contains(newValue.toLowerCase()) || userTreeItem.getValue().department.getValue().toLowerCase().contains(newValue.toLowerCase());
                         return flag;
                     }
                 });
@@ -205,10 +219,8 @@ public class Controller {
 
         if (children.size() > 1) {
             //
-            System.out.println("yeah");
             Node topNode = children.get(children.size() - 1);
             topNode.toBack();
-            System.out.println(children.indexOf(topNode) / children.size());
             progressBar.setProgress((double) current_node++ / children.size());
             if (current_node > 3) {
                 current_node = 1;
@@ -218,15 +230,29 @@ public class Controller {
 
 
     public void setSceneItems(Scene scene) throws IOException {
+        // -- main menus -- //
         home = (Label) scene.lookup("#home_menu");
         sell = (Label) scene.lookup("#sell_menu");
         items = (Label) scene.lookup("#items_menu");
         customers = (Label) scene.lookup("#customers_menu");
         report = (Label) scene.lookup("#report_menu");
         help = (Label) scene.lookup("#help_menu");
+        logo = (Label) scene.lookup("#logo_label");
         changeLanguage();
     }
 
+
+    public static void fromMain() {
+        home = Main.home;
+        sell = Main.sell;
+        items = Main.items;
+        customers = Main.customers;
+        report = Main.report;
+        help = Main.help;
+    }
+
+
+    //handle language preference
 
     public void setLanguage() throws Exception {
         if (Main.fromMain) {
@@ -241,16 +267,6 @@ public class Controller {
         }
     }
 
-    public static void fromMain() throws Exception {
-        home = Main.home;
-        sell = Main.sell;
-        items = Main.items;
-        customers = Main.customers;
-        report = Main.report;
-        help = Main.help;
-    }
-
-
     public static void changeLanguage() throws IOException {
         locale = new Locale(readLanguage());
         bundle = ResourceBundle.getBundle("triplethreads.shemachoch.Pages.lang", locale);
@@ -261,6 +277,7 @@ public class Controller {
         customers.setText(bundle.getString("customers_menu"));
         report.setText(bundle.getString("report_menu"));
         help.setText(bundle.getString("help_menu"));
+        logo.setText(bundle.getString("logo"));
 
         if (!Main.fromMain) {
             if (readLanguage().equals("en")) {
@@ -293,6 +310,21 @@ public class Controller {
         } catch (IOException e) {
             System.out.println("Error while creating config");
         }
+    }
+
+    //handle report menus
+    public void generateReportByMonth() {
+        JFXComboBox comboBox = (JFXComboBox) homeParent.lookup("#monthPicker");
+        System.out.println(comboBox.getValue());
+    }
+
+    public void generateReportByDate() {
+        JFXDatePicker datePicker = (JFXDatePicker) homeParent.lookup("#datePicker");
+        System.out.println(datePicker.getValue());
+    }
+
+    public void exportToPDF() {
+
     }
 
 
@@ -341,11 +373,6 @@ public class Controller {
 
     }
 
-
-    @FXML
-    private void filter(ActionEvent event) {
-
-    }
 
     class User extends RecursiveTreeObject<User> {
 
