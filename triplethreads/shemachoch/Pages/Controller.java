@@ -24,10 +24,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import triplethreads.shemachoch.EntityClasses.Seller;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Locale;
 import java.util.Properties;
 import java.util.ResourceBundle;
@@ -274,13 +271,14 @@ public class Controller {
         locale = new Locale(readLanguage());
         bundle = ResourceBundle.getBundle("triplethreads.shemachoch.Pages.lang", locale);
 
-        home.setText(bundle.getString("home_menu"));
-        sell.setText(bundle.getString("sell_menu"));
-        items.setText(bundle.getString("items_menu"));
-        customers.setText(bundle.getString("customers_menu"));
-        report.setText(bundle.getString("report_menu"));
-        help.setText(bundle.getString("help_menu"));
-        logo.setText(bundle.getString("logo"));
+        home.setText(readUTF(bundle.getString("home_menu")));
+        sell.setText(readUTF(bundle.getString("sell_menu")));
+        items.setText(readUTF(bundle.getString("items_menu")));
+        customers.setText(readUTF(bundle.getString("customers_menu")));
+        report.setText(readUTF(bundle.getString("report_menu")));
+        help.setText(readUTF(bundle.getString("help_menu")));
+        logo.setText(readUTF(bundle.getString("logo")));
+
 
         if (!Main.fromMain) {
             if (readLanguage().equals("en")) {
@@ -289,6 +287,11 @@ public class Controller {
                 dropdownButton.setValue("Amharic");
             }
         }
+    }
+    public static String readUTF(String key) throws UnsupportedEncodingException {
+        return new String (key.getBytes("ISO-8859-1"),"UTF-8");
+
+
     }
 
     public static String readLanguage() throws IOException {
