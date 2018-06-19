@@ -1,5 +1,6 @@
 package triplethreads.shemachoch.EntityClasses;
 
+import java.awt.image.BufferedImage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,9 +11,8 @@ public class Customer {
 	String firstName = null;
 	String lastName = null;
 	String IDnumber = null;
-	Object QRcode = null;
 	String HouseNumber = null;
-	Object Photo = null;
+	BufferedImage Photo = null;
 	ArrayList<String> getCustomer(String customer_id) {
 		ArrayList<String> info = new ArrayList<>();
 		int Count = 0;

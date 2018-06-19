@@ -198,6 +198,8 @@ public class Controller {
         setSceneItems(addCustomerScene);
     }
 
+
+
     public void addItems() throws IOException {
         homeParent = FXMLLoader.load(getClass().getResource("UI/AddItemUI.fxml"));
         addItemsScene = new Scene(homeParent);
@@ -223,6 +225,14 @@ public class Controller {
         validateItems(name, brand, quantity, price);
     }
 
+
+    public void addCustomerButton(){
+        TextField name = (TextField) homeParent.lookup("#name_TextField");
+        TextField last_name = (TextField) homeParent.lookup("#last_name_TextField");
+        TextField family_no = (TextField) homeParent.lookup("#no_families_TextField");
+        TextField location = (TextField) homeParent.lookup("#location_TextFields");
+        validateCustumer(name, last_name, family_no, location);
+    }
     static int current_node = 0;
 
     public void nextButtonSellMenu() {
@@ -400,14 +410,14 @@ public class Controller {
             this.itemName = new SimpleStringProperty(items.getName());
             this.itemBrand = new SimpleStringProperty(items.getBrand());
             this.itemId = new SimpleStringProperty(items.getItemId());
-            itemPrice = new SimpleStringProperty(items.getPrice()+"");
+            this.itemPrice = new SimpleStringProperty(items.getPrice()+"");
         }
     }
 
 
     //validation of fields * * * *
 
-    public void validateCustumer(TextField Name, TextField lastName, ComboBox FamilyNO, TextField laocation) {
+    public void validateCustumer(TextField Name, TextField lastName, TextField FamilyNO, TextField laocation) {
 
         if (String.valueOf(Name).equals(" ") || String.valueOf(lastName).equals(" ")
                 || String.valueOf(FamilyNO).equals("") || String.valueOf(laocation).equals("")) {
