@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ShemachochManagmentSystem.iml" filepath="$PROJECT_DIR$/ShemachochManagmentSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Shemachoch.iml" filepath="$PROJECT_DIR$/Shemachoch.iml" />
     </modules>
   </component>
 </project>

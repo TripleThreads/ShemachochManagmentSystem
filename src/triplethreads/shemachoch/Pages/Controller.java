@@ -14,21 +14,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TreeItem;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import triplethreads.shemachoch.EntityClasses.CreateDatabaseTables;
-import triplethreads.shemachoch.EntityClasses.Items;
-import triplethreads.shemachoch.EntityClasses.Register;
-import triplethreads.shemachoch.EntityClasses.Seller;
+import triplethreads.shemachoch.EntityClasses.*;
 
 
+import javax.swing.*;
 import java.io.*;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
@@ -64,6 +60,9 @@ public class Controller {
     static JFXComboBox dropdownButton;
     static Parent homeParent;
     static JFXTextField searchInput;
+    static JFXTextField searchInput;
+    static TextField sellername;
+    static PasswordField sellerpassword;
     static Pane verifyCustomerPane, specifyAmountPane;
     @FXML
     static StackPane sellParentStackPane;
@@ -213,8 +212,22 @@ public class Controller {
 
     //* * * * * * * * *  *
 
-    public void loginButton() throws IOException {
-        homeMenu();
+    public  void loginButton() throws IOException {
+        sellername=(TextField) Main.homeUI.lookup("#namefield");
+        sellerpassword=(PasswordField) Main.homeUI.lookup("#passwordfield");
+        String username=sellername.getText().toLowerCase();
+        String password=sellerpassword.getText();
+        LogInController lc=new LogInController();
+        try {
+            boolean result=lc.verify(username,password);
+            if(result==true){homeMenu();}
+            else{
+                JOptionPane.showMessageDialog(null,"INCORRECT ACCOUNT");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        //homeMenu();
     }
 
     public void addItemButton() {
