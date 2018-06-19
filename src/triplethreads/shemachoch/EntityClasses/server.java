@@ -1,4 +1,6 @@
-package src.triplethreads.shemachoch.EntityClasses;
+package triplethreads.shemachoch.EntityClasses;
+
+import triplethreads.shemachoch.EntityClasses.Customer;
 
 import java.awt.image.BufferedImage;
 
@@ -41,7 +43,7 @@ public class server {
                 UserId = din.readLine();
                 Customer v = new Customer();
                 System.out.println(UserId+"\n");
-                System.out.println(v.getCustomer(UserId));
+                //System.out.println(v.getCustomer(UserId));
 
             }
         } catch (IOException e) {

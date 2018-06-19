@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 
 public class Seller {
 	public boolean AddCustomer(String credential[]) {
-		Connection con = ConnectionHandler.INISTANCE.Connect();
+		Connection con = ConnectionHandler.INSTANCE.getConnection();
 		
 		try {
 			String sql = "insert into Customer_data " + "(customer_id, FirstName, LastName , Location, Family_number , Allowed_Amount)"
@@ -29,7 +29,7 @@ public class Seller {
 	
 public boolean RemoveCustomer(String Customer_id) {
 		
-		Connection con = ConnectionHandler.INISTANCE.Connect();
+		Connection con = ConnectionHandler.INSTANCE.getConnection();
 		try {
 			String sql = "DELETE FROM Customer_data WHERE Item_id = ?";
 			PreparedStatement ps = con.prepareStatement(sql);

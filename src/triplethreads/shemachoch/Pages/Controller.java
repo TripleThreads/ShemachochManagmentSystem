@@ -22,27 +22,31 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import triplethreads.shemachoch.EntityClasses.CreateDatabaseTables;
+import triplethreads.shemachoch.EntityClasses.Items;
+import triplethreads.shemachoch.EntityClasses.Register;
 import triplethreads.shemachoch.EntityClasses.Seller;
 
+
 import java.io.*;
-import java.util.Locale;
-import java.util.Properties;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.function.Predicate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author segni
  * the UI is built on javafx. one Stage is used for all scenes
  * but each menu has its own scene i.e FXML file. This is pretty similar to tiater where scene changes but the stage
  * will remain the same.
- *
+ * <p>
  * homeMenu method listens for home button is clicked from main menu.
  * sellMenu method listens for sell button is clicked from main menu.
  * itemsMenu method listens for items button is clicked from main menu.
  * customersMenu method listens for customer button is clicked from main menu.
  * reportMenu method listens for report button is clicked from main menu.
  * helpMenu method listens for help button is clicked from main menu.
- *
+ * <p>
  * setSceneItems is used to get elements by their id from the scene
  * setLanguage is called when the language is changed [using the dropdown from UI]
  * writeLanguage is used to write user language prefrence on configuration file
@@ -66,7 +70,7 @@ public class Controller {
     static JFXProgressBar progressBar;
     static HBox currentButton;
 
-    //the following methods are created to listen the change of menu
+    //the following methods are created to listen the change of menu * * * * * * * *
     public void sellMenu() throws IOException {
         homeParent = FXMLLoader.load(getClass().getResource("UI/SellUI.fxml"));
         sellScene = new Scene(homeParent);
@@ -117,10 +121,10 @@ public class Controller {
         searchInput.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                treeView.setPredicate(new Predicate<TreeItem<User>>() {
+                treeView.setPredicate(new Predicate<TreeItem<ItemAdapter>>() {
                     @Override
-                    public boolean test(TreeItem<User> userTreeItem) {
-                        boolean flag = userTreeItem.getValue().department.getValue().toLowerCase().contains(newValue.toLowerCase()) || userTreeItem.getValue().department.getValue().toLowerCase().contains(newValue.toLowerCase());
+                    public boolean test(TreeItem<ItemAdapter> userTreeItem) {
+                        boolean flag = userTreeItem.getValue().itemName.getValue().toLowerCase().contains(newValue.toLowerCase()) || userTreeItem.getValue().itemName.getValue().toLowerCase().contains(newValue.toLowerCase());
                         return flag;
                     }
                 });
@@ -158,12 +162,9 @@ public class Controller {
         searchInput.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                treeView.setPredicate(new Predicate<TreeItem<User>>() {
-                    @Override
-                    public boolean test(TreeItem<User> userTreeItem) {
-                        boolean flag = userTreeItem.getValue().department.getValue().toLowerCase().contains(newValue.toLowerCase()) || userTreeItem.getValue().department.getValue().toLowerCase().contains(newValue.toLowerCase());
-                        return flag;
-                    }
+                treeView.setPredicate(userTreeItem -> {
+                    boolean flag = userTreeItem.getValue().itemName.getValue().toLowerCase().contains(newValue.toLowerCase()) || userTreeItem.getValue().itemName.getValue().toLowerCase().contains(newValue.toLowerCase());
+                    return flag;
                 });
             }
         });
@@ -208,8 +209,18 @@ public class Controller {
         setSceneItems(addItemsScene);
     }
 
+    //* * * * * * * * *  *
+
     public void loginButton() throws IOException {
         homeMenu();
+    }
+
+    public void addItemButton() {
+        TextField name = (TextField) homeParent.lookup("#item_name_textField");
+        TextField brand = (TextField) homeParent.lookup("#brand_textField");
+        TextField quantity = (TextField) homeParent.lookup("#quantity_textField");
+        TextField price = (TextField) homeParent.lookup("#price_textField");
+        validateItems(name, brand, quantity, price);
     }
 
     static int current_node = 0;
@@ -252,7 +263,7 @@ public class Controller {
     }
 
 
-    //handle language preference
+    // handle language preference * * * * * * *
 
     public void setLanguage() throws Exception {
         if (Main.fromMain) {
@@ -288,10 +299,9 @@ public class Controller {
             }
         }
     }
+
     public static String readUTF(String key) throws UnsupportedEncodingException {
-        return new String (key.getBytes("ISO-8859-1"),"UTF-8");
-
-
+        return new String(key.getBytes("ISO-8859-1"), "UTF-8");
     }
 
     public static String readLanguage() throws IOException {
@@ -317,6 +327,7 @@ public class Controller {
             System.out.println("Error while creating config");
         }
     }
+    // * * * * * * * * * * end of setting language
 
     //handle report menus
     public void generateReportByMonth() {
@@ -337,86 +348,179 @@ public class Controller {
 
     //table view
     @FXML
-    private JFXTreeTableView<User> treeView;
+    private JFXTreeTableView<ItemAdapter> treeView;
 
 
     public void initialize_table() {
-        try {
-            treeView = (JFXTreeTableView<User>) homeParent.lookup("#treeView");
-        } catch (NullPointerException e) {
-            treeView = (JFXTreeTableView<User>) homeParent.lookup("#treeView");
+
+        treeView = (JFXTreeTableView<ItemAdapter>) homeParent.lookup("#treeView");
+        JFXTreeTableColumn<ItemAdapter, String> item_id = new JFXTreeTableColumn<>("Item ID");
+        item_id.setPrefWidth(160);
+        item_id.setCellValueFactory(param -> param.getValue().getValue().itemId);
+
+        JFXTreeTableColumn<ItemAdapter, String> item_name = new JFXTreeTableColumn<>("Name");
+        item_name.setPrefWidth(160);
+        item_name.setCellValueFactory(param -> param.getValue().getValue().itemName);
+
+        JFXTreeTableColumn<ItemAdapter, String> brand = new JFXTreeTableColumn<>("Brand");
+        brand.setPrefWidth(160);
+        brand.setCellValueFactory(param -> param.getValue().getValue().itemBrand);
+
+        JFXTreeTableColumn<ItemAdapter, String> item_price = new JFXTreeTableColumn<>("Item Price");
+        item_price.setPrefWidth(180);
+        item_price.setCellValueFactory(param -> param.getValue().getValue().itemPrice);
+
+        JFXTreeTableColumn<ItemAdapter, String> item_amount = new JFXTreeTableColumn<>("Item amount");
+        item_amount.setPrefWidth(180);
+        item_amount.setCellValueFactory(param -> param.getValue().getValue().itemPrice);
+
+        ObservableList<ItemAdapter> items_list = FXCollections.observableArrayList();
+
+        List<Items> itemsList = new Items().getListOfAllItems();
+        for (int i = 0; i < itemsList.size(); i++){
+            items_list.add(new ItemAdapter(itemsList.get(i)));
         }
-        JFXTreeTableColumn<User, String> item = new JFXTreeTableColumn<>("Item");
-        item.setPrefWidth(160);
-        item.setCellValueFactory(param -> param.getValue().getValue().department);
 
-        JFXTreeTableColumn<User, String> amount = new JFXTreeTableColumn<>("Amount");
-        amount.setPrefWidth(160);
-        amount.setCellValueFactory(param -> param.getValue().getValue().age);
-
-        JFXTreeTableColumn<User, String> price_per_unit = new JFXTreeTableColumn<>("Price per unit");
-        price_per_unit.setPrefWidth(160);
-        price_per_unit.setCellValueFactory(param -> param.getValue().getValue().userName);
-
-        JFXTreeTableColumn<User, String> expire_date = new JFXTreeTableColumn<>("Expire Date");
-        expire_date.setPrefWidth(180);
-        expire_date.setCellValueFactory(param -> param.getValue().getValue().userName);
-
-        ObservableList<User> users = FXCollections.observableArrayList();
-        users.add(new User("Sugar", "23", "12"));
-        users.add(new User("Popular Soap", "22", "Employee 1"));
-        users.add(new User("Hayat Oil", "22", "Employee 2"));
-        users.add(new User("Sales Department", "25", "Employee 4"));
-        users.add(new User("Sales Department", "25", "Employee 5"));
-        users.add(new User("IT Department", "42", "ID 2"));
-        users.add(new User("HR Department", "22", "HR 1"));
-        users.add(new User("HR Department", "22", "HR 2"));
-
-        final TreeItem<User> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
-        treeView.getColumns().setAll(item, amount, price_per_unit, expire_date);
+        final TreeItem<ItemAdapter> root = new RecursiveTreeItem<>(items_list, RecursiveTreeObject::getChildren);
+        treeView.getColumns().setAll(item_id, item_name, brand, item_price, item_amount);
         treeView.setRoot(root);
         treeView.setRoot(root);
         treeView.setShowRoot(false);
 
     }
 
+    class ItemAdapter extends RecursiveTreeObject<ItemAdapter> {
+        StringProperty itemId;
+        StringProperty itemName;
+        StringProperty itemPrice;
+        StringProperty itemAmount;
+        StringProperty itemBrand;
+        public ItemAdapter(Items items) {
+            this.itemAmount = new SimpleStringProperty(items.getAmount()+"");
+            this.itemName = new SimpleStringProperty(items.getName());
+            this.itemBrand = new SimpleStringProperty(items.getBrand());
+            this.itemId = new SimpleStringProperty(items.getItemId());
+            itemPrice = new SimpleStringProperty(items.getPrice()+"");
+        }
+    }
 
-    class User extends RecursiveTreeObject<User> {
 
-        StringProperty userName;
-        StringProperty age;
-        StringProperty department;
+    //validation of fields * * * *
 
-        public User(String department, String age, String userName) {
-            this.department = new SimpleStringProperty(department);
-            this.userName = new SimpleStringProperty(userName);
-            this.age = new SimpleStringProperty(age);
+    public void validateCustumer(TextField Name, TextField lastName, ComboBox FamilyNO, TextField laocation) {
+
+        if (String.valueOf(Name).equals(" ") || String.valueOf(lastName).equals(" ")
+                || String.valueOf(FamilyNO).equals("") || String.valueOf(laocation).equals("")) {
+            System.out.println("please fill the space");
+
+        } else if (String.valueOf(Name).matches("\\d")) {
+
+            System.out.println("The value of name should contian only letters");
+        } else if (String.valueOf(lastName).matches("\\d")) {
+
+            System.out.println("The value of last name should only contian letters");
+        } else if (String.valueOf(FamilyNO).contains("0-9")) {
+            System.out.println("The value of FamilyNo should only contian numbers");
+
+
+        } else {
+
+            Seller customer = new Seller();
+            String credential[] = {String.valueOf(Name), String.valueOf(lastName), String.valueOf(FamilyNO), String.valueOf(laocation)};
+            customer.AddCustomer(credential);
         }
 
-    }
 
-public void validateCustumer(TextField Name , TextField lastName , ComboBox FamilyNO , TextField laocation) {
-
-    if (String.valueOf(Name).equals(" ") || String.valueOf(lastName).equals(" ")
-            || String.valueOf(FamilyNO).equals("") || String.valueOf(laocation).equals("")) {
-        System.out.println("please fill the space");
-
-    } else if (String.valueOf(Name).matches("\\d")) {
-
-        System.out.println("The value of name should contian only letters");
-    } else if (String.valueOf(lastName).matches("\\d")) {
-
-        System.out.println("The value of last name should only contian letters");
-    } else if (String.valueOf(FamilyNO).contains("0-9")) {
-        System.out.println("The value of FamilyNo should only contian numbers");
-
-
-    } else {
-
-        Seller customer = new Seller();
-        String credential[] = {String.valueOf(Name), String.valueOf(lastName), String.valueOf(FamilyNO), String.valueOf(laocation)};
-        customer.AddCustomer(credential);
     }
 
 
-}}
+    public boolean validateItems(TextField name, TextField brand, TextField amount, TextField price) {
+
+        if (name.getText().equals("") || brand.getText().equals("") || amount.getText().equals("") || price.getText().equals("")) {
+            return false;
+        } else if (amount.getText().contains("[a-zA-Z]+")) {
+            return false;
+        } else if (price.getText().contains("[a-zA-Z]+")) {
+            return false;
+        } else if (name.getText().matches(".*\\d.*")) {
+            return false;
+        } else {
+            String arr[] = {name.getText(), brand.getText(), amount.getText(), price.getText()};
+            new CreateDatabaseTables();
+            Items items = new Items();
+            items.addItems(arr);
+            return true;
+        }
+    }
+
+    public boolean validateRegistration(TextField Fname, TextField Lname, TextField Password, TextField location, TextField id) {
+        if (String.valueOf(Fname).equals(null) || String.valueOf(Lname).equals(null) || String.valueOf(Password).equals(null) || String.valueOf(location).equals(null) || String.valueOf(id).equals(null)) {
+            return false;
+        } else if (String.valueOf(Fname).matches(".*\\d*.")) {
+            return false;
+        } else if (String.valueOf(Lname).matches(".*\\d*.")) {
+            return false;
+        } else if (String.valueOf(Password).length() < 6) {
+
+        } else {
+            Pattern letter = Pattern.compile("[a-zA-z]]");
+            Pattern digit = Pattern.compile("[0-9]");
+            Pattern specialChars = Pattern.compile("[!@#$%^&*()_+=|<>?{}\\[\\]~-]");
+
+            Matcher hasLetter = letter.matcher(String.valueOf(Password));
+            Matcher hasDigit = digit.matcher(String.valueOf(Password));
+            Matcher hasSpecialChar = specialChars.matcher(String.valueOf(Password));
+            if (hasLetter.find() == false && hasDigit.find() == false || hasSpecialChar.find() == false) {
+                return false;
+            } else {
+                String s[] = {String.valueOf(Fname) + " " + String.valueOf(Lname), String.valueOf(Password), String.valueOf(location)};
+                new Register().Register(s);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    ///* * * * * end validation
+    public static void writeLog(String log) {
+        Date d = new Date();
+        @SuppressWarnings("deprecation")
+        String currentDate = d.getDate() + "/" + d.getMonth() + "/" + d.getYear();
+        try (FileWriter fw = new FileWriter("Crash Report.txt", true);
+             BufferedWriter bw = new BufferedWriter(fw);
+             PrintWriter out = new PrintWriter(bw)) {
+            out.println("Log: " + currentDate + "  " + log);
+        } catch (IOException e) {
+            writeLog(e.getMessage());
+        }
+    }
+
+
+    public static String createTempFile(String temp_file_name, String content) {
+        String abs_path = null;
+        try {
+            FileWriter fileWriter = new FileWriter("login.tmp");
+            //create a temp file
+            fileWriter.write(content);
+            fileWriter.close();
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+        return abs_path;
+    }
+
+    public static String readTempFiles(String temp) {
+        String string = "mm";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(temp));
+            string = br.readLine();
+            br.close();
+        } catch (IOException e) {
+            writeLog(e.getLocalizedMessage());
+        }
+        return string;
+    }
+
+}

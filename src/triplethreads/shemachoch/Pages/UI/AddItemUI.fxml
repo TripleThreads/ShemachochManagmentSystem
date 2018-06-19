@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.TextField?>
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.validation.NumberValidator?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,217 +12,199 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" styleClass="parent" stylesheets="@../stylesheet.css"
-            xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="triplethreads.shemachoch.Pages.Controller">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" styleClass="parent" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="triplethreads.shemachoch.Pages.Controller">
     <children>
-        <VBox prefHeight="600.0" prefWidth="300.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0"
-              AnchorPane.topAnchor="0.0">
+        <VBox prefHeight="600.0" prefWidth="300.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label fx:id="logo_label" minWidth="-Infinity" prefHeight="75.0" prefWidth="300.0"
-                       style="-fx-background-color: #00a2d3;" text="Shemt" textFill="WHITE">
+                <Label fx:id="logo_label" minWidth="-Infinity" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #00a2d3;" text="Shemt" textFill="WHITE">
                     <font>
-                        <Font size="27.0"/>
+                        <Font size="27.0" />
                     </font>
                     <VBox.margin>
-                        <Insets/>
+                        <Insets />
                     </VBox.margin>
                     <padding>
-                        <Insets left="50.0"/>
+                        <Insets left="50.0" />
                     </padding>
                 </Label>
-                <HBox alignment="CENTER_LEFT" onMouseClicked="#homeMenu" prefHeight="50.0" prefWidth="300.0"
-                      styleClass="btns">
+                <HBox alignment="CENTER_LEFT" onMouseClicked="#homeMenu" prefHeight="50.0" prefWidth="300.0" styleClass="btns">
                     <children>
                         <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@file:home.png"/>
+                                <Image url="@file:home.png" />
                             </image>
                             <HBox.margin>
-                                <Insets left="50.0"/>
+                                <Insets left="50.0" />
                             </HBox.margin>
                         </ImageView>
                         <Label fx:id="home_menu" text="Home" textFill="WHITE">
                             <padding>
-                                <Insets left="30.0"/>
+                                <Insets left="30.0" />
                             </padding>
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                             <HBox.margin>
-                                <Insets/>
+                                <Insets />
                             </HBox.margin>
                         </Label>
                     </children>
                     <VBox.margin>
-                        <Insets top="20.0"/>
+                        <Insets top="20.0" />
                     </VBox.margin>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" onMouseClicked="#sellMenu" prefHeight="50.0" prefWidth="300.0"
-                      styleClass="btns">
+                <HBox alignment="CENTER_LEFT" onMouseClicked="#sellMenu" prefHeight="50.0" prefWidth="300.0" styleClass="btns">
                     <children>
                         <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@file:shopping-cart.png"/>
+                                <Image url="@file:shopping-cart.png" />
                             </image>
                             <HBox.margin>
-                                <Insets left="50.0"/>
+                                <Insets left="50.0" />
                             </HBox.margin>
                         </ImageView>
                         <Label fx:id="sell_menu" text="Sell" textFill="WHITE">
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                             <padding>
-                                <Insets left="30.0"/>
+                                <Insets left="30.0" />
                             </padding>
                         </Label>
                     </children>
                 </HBox>
-                <HBox fx:id="itemsMenu" alignment="CENTER_LEFT" onMouseClicked="#itemsMenu" prefHeight="50.0"
-                      prefWidth="300.0" styleClass="btns">
+                <HBox fx:id="itemsMenu" alignment="CENTER_LEFT" onMouseClicked="#itemsMenu" prefHeight="50.0" prefWidth="300.0" styleClass="btns">
                     <children>
                         <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@file:items.png"/>
+                                <Image url="@file:items.png" />
                             </image>
                             <HBox.margin>
-                                <Insets left="50.0"/>
+                                <Insets left="50.0" />
                             </HBox.margin>
                         </ImageView>
                         <Label fx:id="items_menu" text="Items" textFill="WHITE">
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                             <padding>
-                                <Insets left="30.0"/>
+                                <Insets left="30.0" />
                             </padding>
                         </Label>
                     </children>
                 </HBox>
-                <HBox fx:id="customersButton" alignment="CENTER_LEFT" onMouseClicked="#customersMenu" prefHeight="50.0"
-                      prefWidth="300.0" styleClass="btns">
+                <HBox fx:id="customersButton" alignment="CENTER_LEFT" onMouseClicked="#customersMenu" prefHeight="50.0" prefWidth="300.0" styleClass="btns">
                     <children>
                         <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@file:customers.png"/>
+                                <Image url="@file:customers.png" />
                             </image>
                             <HBox.margin>
-                                <Insets left="50.0"/>
+                                <Insets left="50.0" />
                             </HBox.margin>
                         </ImageView>
                         <Label fx:id="customers_menu" text="Customers" textFill="WHITE">
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                             <padding>
-                                <Insets left="30.0"/>
+                                <Insets left="30.0" />
                             </padding>
                         </Label>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" onMouseClicked="#reportMenu" prefHeight="50.0" prefWidth="300.0"
-                      styleClass="btns">
+                <HBox alignment="CENTER_LEFT" onMouseClicked="#reportMenu" prefHeight="50.0" prefWidth="300.0" styleClass="btns">
                     <children>
                         <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@file:list.png"/>
+                                <Image url="@file:list.png" />
                             </image>
                             <HBox.margin>
-                                <Insets left="50.0"/>
+                                <Insets left="50.0" />
                             </HBox.margin>
                         </ImageView>
                         <Label fx:id="report_menu" text="Report" textFill="WHITE">
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                             <padding>
-                                <Insets left="30.0"/>
+                                <Insets left="30.0" />
                             </padding>
                         </Label>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER_LEFT" onMouseClicked="#helpMenu" prefHeight="50.0" prefWidth="300.0"
-                      styleClass="btns">
+                <HBox alignment="CENTER_LEFT" onMouseClicked="#helpMenu" prefHeight="50.0" prefWidth="300.0" styleClass="btns">
                     <children>
                         <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@file:info.png"/>
+                                <Image url="@file:info.png" />
                             </image>
                             <HBox.margin>
-                                <Insets left="50.0"/>
+                                <Insets left="50.0" />
                             </HBox.margin>
                         </ImageView>
                         <Label fx:id="help_menu" text="Help" textFill="WHITE">
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                             <padding>
-                                <Insets left="30.0"/>
+                                <Insets left="30.0" />
                             </padding>
                         </Label>
                     </children>
                 </HBox>
-                <Label text="Label"/>
-                <HBox fx:id="itemsMenu" alignment="CENTER_LEFT" layoutX="10.0" layoutY="205.0"
-                      onMouseClicked="#itemsMenu" prefHeight="50.0" prefWidth="300.0" styleClass="btns">
+                <Label text="Label" />
+                <HBox fx:id="itemsMenu" alignment="CENTER_LEFT" layoutX="10.0" layoutY="205.0" onMouseClicked="#itemsMenu" prefHeight="50.0" prefWidth="300.0" styleClass="btns">
                     <children>
                         <ImageView fitHeight="34.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@file:items.png"/>
+                                <Image url="@file:items.png" />
                             </image>
                             <HBox.margin>
-                                <Insets left="50.0"/>
+                                <Insets left="50.0" />
                             </HBox.margin>
                         </ImageView>
                         <Label fx:id="items_menu1" text="Items" textFill="WHITE">
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="14.0" />
                             </font>
                             <padding>
-                                <Insets left="30.0"/>
+                                <Insets left="30.0" />
                             </padding>
                         </Label>
                     </children>
                 </HBox>
             </children>
         </VBox>
-        <TextField layoutX="844.0" layoutY="184.0" prefHeight="26.0" prefWidth="228.0" promptText="Item name"/>
-        <Label layoutX="694.0" layoutY="184.0" prefHeight="25.0" prefWidth="99.0" text="Item">
+        <Label layoutX="648.0" layoutY="170.0" prefHeight="25.0" prefWidth="99.0" text="Item" AnchorPane.rightAnchor="620.0">
             <font>
-                <Font name="Ubuntu Light" size="21.0"/>
+                <Font name="Ubuntu Light" size="21.0" />
             </font>
         </Label>
-        <TextField layoutX="844.0" layoutY="234.0" prefHeight="26.0" prefWidth="228.0" promptText="Brand"/>
-        <Label layoutX="694.0" layoutY="234.0" prefHeight="25.0" prefWidth="99.0" text="Brand">
+        <TextField fx:id="brand_textField" layoutX="798.0" layoutY="245.0" prefHeight="26.0" prefWidth="228.0" promptText="Brand" AnchorPane.rightAnchor="340.0" />
+        <Label layoutX="648.0" layoutY="245.0" prefHeight="25.0" prefWidth="99.0" text="Brand" AnchorPane.rightAnchor="619.0">
             <font>
-                <Font name="Ubuntu Light" size="21.0"/>
+                <Font name="Ubuntu Light" size="21.0" />
             </font>
         </Label>
-        <Label layoutX="693.0" layoutY="283.0" prefHeight="25.0" prefWidth="114.0" text="Expire Date">
+        <TextField fx:id="quantity_textField" layoutX="797.0" layoutY="318.0" prefHeight="26.0" prefWidth="228.0" promptText="Amonunt" AnchorPane.rightAnchor="340.0" />
+        <Label layoutX="647.0" layoutY="318.0" prefHeight="25.0" prefWidth="99.0" text="Quantity" AnchorPane.rightAnchor="620.0">
             <font>
-                <Font name="Ubuntu Light" size="21.0"/>
+                <Font name="Ubuntu Light" size="21.0" />
             </font>
         </Label>
-        <TextField layoutX="843.0" layoutY="334.0" prefHeight="26.0" prefWidth="228.0" promptText="Amonunt"/>
-        <Label layoutX="693.0" layoutY="334.0" prefHeight="25.0" prefWidth="99.0" text="Quantity">
+        <TextField fx:id="price_textField" layoutX="797.0" layoutY="389.0" prefHeight="26.0" prefWidth="228.0" promptText="Customer name" AnchorPane.rightAnchor="340.0" />
+        <Label layoutX="647.0" layoutY="389.0" prefHeight="25.0" prefWidth="99.0" text="Price" AnchorPane.rightAnchor="620.0">
             <font>
-                <Font name="Ubuntu Light" size="21.0"/>
+                <Font name="Ubuntu Light" size="21.0" />
             </font>
         </Label>
-        <TextField layoutX="843.0" layoutY="383.0" prefHeight="26.0" prefWidth="228.0" promptText="Customer name"/>
-        <Label layoutX="693.0" layoutY="383.0" prefHeight="25.0" prefWidth="99.0" text="Price">
-            <font>
-                <Font name="Ubuntu Light" size="21.0"/>
-            </font>
-        </Label>
-        <JFXButton buttonType="RAISED" layoutX="820.0" layoutY="452.0" prefHeight="36.0" prefWidth="142.0"
-                   text="Add Customer" textFill="WHITE">
+        <JFXButton fx:id="add_item_Button" buttonType="RAISED" layoutX="774.0" layoutY="466.0" onAction="#addItemButton" prefHeight="36.0" prefWidth="142.0" text="Add Item" textFill="WHITE" AnchorPane.rightAnchor="450.0">
             <padding>
-                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0"/>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
             </padding>
         </JFXButton>
-        <JFXDatePicker layoutX="844.0" layoutY="283.0"/>
-        <NumberValidator layoutX="793.0" layoutY="283.0"/>
+        <NumberValidator layoutX="793.0" layoutY="283.0" />
+      <TextField fx:id="item_name_textField" layoutX="798.0" layoutY="170.0" prefHeight="26.0" prefWidth="228.0" promptText="Name of item" />
     </children>
 </AnchorPane>

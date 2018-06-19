@@ -4,11 +4,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import static javax.print.DocFlavor.BYTE_ARRAY.PDF;
 
-import org.apache.pdfbox.jbig2.segments.Table;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -29,7 +25,7 @@ public class Report {
 
         System.setProperty("sun.java2d.cmm", "sun.java2d.cmm.kcms.KcmsServiceProvider");
         this.monthsEng = new String[]{"Meskerem","Tikemt","Hidar","Tahsas","Tir","Yekatit","Megabit","Miyazia","Gunbot","Sene","Hamle","Nehase","Pagumen"};
-        this.con=ConnectionHandler.INISTANCE.getConnection();
+        this.con=ConnectionHandler.INSTANCE.getConnection();
 
     }
 

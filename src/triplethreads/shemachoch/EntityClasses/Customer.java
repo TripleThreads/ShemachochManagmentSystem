@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class Customer {
-	static Connection con = ConnectionHandler.INISTANCE.Connect();
+	static Connection con = ConnectionHandler.INSTANCE.getConnection();
 	String firstName = null;
 	String lastName = null;
 	String IDnumber = null;

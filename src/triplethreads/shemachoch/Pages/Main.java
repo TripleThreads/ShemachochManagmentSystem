@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import triplethreads.shemachoch.EntityClasses.CreateDatabaseTables;
 
 public class Main extends Application {
     static Parent homeUI;
@@ -18,7 +19,7 @@ public class Main extends Application {
     boolean logged_in = false;
     @Override
     public void start(Stage primaryStage) throws Exception {
-
+        new CreateDatabaseTables();
         if (logged_in) {
             homeUI = FXMLLoader.load(getClass().getResource("UI/HomeUI.fxml"));
         } else {

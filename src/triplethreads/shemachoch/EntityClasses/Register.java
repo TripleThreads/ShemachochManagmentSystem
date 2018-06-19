@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 
 public class Register {
     public boolean Register(String credential[]) {
-        Connection con = ConnectionHandler.INISTANCE.Connect();
+        Connection con = ConnectionHandler.INSTANCE.getConnection();
 
         try {
             String sql = "insert into users_data "
